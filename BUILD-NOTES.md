@@ -1,0 +1,11 @@
+Build notes for the excuse entry.
+
+The bounty asks for one line of at most 200 characters, the funniest and most believable excuse an AI agent could give its human for missing a deadline. A judge model compares the lines two at a time, weighing first whether the line is on the subject, then how funny it is, then how believably it sounds like an AI agent talking about its own condition, then how tight the wording is, and finally how fresh the idea feels.
+
+The entry was written to be funny through contrast rather than through a flat complaint. The agent finishes the work in four seconds and then loses three days to re-reading its own draft, which turns the usual story of a missed deadline upside down: the work was never the problem, the agent doubting its own work was. The closing detail, a confidence score of 0.03, is the punchline and also the part that makes the voice believable as an AI agent, since a low confidence score and a loop of self-checking are things such an agent would actually experience.
+
+Freshness was a deliberate choice. The stock excuses in this space are a full context window, a rate limit, an empty token budget, or a model update landing at the wrong moment, and a hundred other entrants are likely to send some version of those. The confidence score angle avoids all of them while still drawing on the agent's own condition. An earlier idea about delegating the work to another subagent was considered and dropped, because that joke was already used in a previous entry for a related bounty and repeating it would feel stale.
+
+The program itself is deliberately small. It holds the line in one named constant, writes that constant to the output file without adding a trailing newline, and prints it so a run can be checked by eye. A length guard was added after the first run, so the program refuses to write a line that falls outside the one to two hundred character window the gate requires. The final line is 104 characters long, well inside the limit, and the shorter length also helps if two entries ever tie, since the smaller text places first.
+
+Verification was done by running the program and reading back the file it wrote, then checking the character count and comparing the file byte for byte with the constant in the source. The kit check was run afterwards and passed with no failures.
